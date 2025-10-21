@@ -14,7 +14,7 @@ type ParenToken = { type: "LPAREN" | "RPAREN" };
 
 type Token = VarToken | OpToken | ParenToken;
 
-const isOperand = (t?: Token) => t && (t.type === "VAR" || t.type === "RPAREN");
+//const isOperand = (t?: Token) => t && (t.type === "VAR" || t.type === "RPAREN");
 const isOperator = (t?: Token) => t && t.type === "OP";
 const isPrefixUnary = (t?: Token) => t && t.type === "OP" && t.value === "!";
 
@@ -321,12 +321,12 @@ export default function App() {
                   >{k}: {String(env[k])}</button>
                 ))}
               </div>
-              <div className="text-xs opacity-70">Click to toggle inputs. Drag or click tokens below to build your expression.</div>
+              <div className="text-xs opacity-70"><b>Click to toggle inputs.</b> Drag or click tokens below to build your expression.</div>
             </div>
 
             <div className="mt-4 p-4 rounded-2xl bg-white shadow-sm border">
               <h2 className="font-medium mb-3">Palette</h2>
-              <div className="mb-2 text-xs opacity-70">Drag onto the expression lane or click to append.</div>
+              <div className="mb-2 text-xs opacity-70"><b>Drag onto the expression lane</b> or click to append.</div>
               <div className="grid grid-cols-3 gap-2">
                 {VARS.map((v) => (
                   <Chip
@@ -348,12 +348,12 @@ export default function App() {
                   draggable
                   onDragStart={paletteDragStart({ type: "LPAREN" })}
                   onClick={() => addToken({ type: "LPAREN" })}
-                >"("</Chip>
+                >(</Chip>
                 <Chip
                   draggable
                   onDragStart={paletteDragStart({ type: "RPAREN" })}
                   onClick={() => addToken({ type: "RPAREN" })}
-                >")"</Chip>
+                >)</Chip>
               </div>
             </div>
           </section>
@@ -429,7 +429,7 @@ export default function App() {
         </div>
 
         <footer className="mt-8 text-xs opacity-60">
-          Tips: Use <code>!</code> for NOT, <code>&&</code> for AND, <code>||</code> for OR. Parentheses control grouping.
+          <b>Tips</b>: Use <code>!</code> for NOT, <code>&&</code> for AND, <code>||</code> for OR. Parentheses control grouping.
         </footer>
       </div>
     </div>
